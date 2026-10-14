@@ -396,12 +396,13 @@ function AbstractMCMC.step(
     return AbstractMCMC.step(rng, model, sampler, state; kwargs...)
 end
 
-@nospecialize function AbstractMCMC.step(
+function AbstractMCMC.step(
     rng::Random.AbstractRNG,
     model::MultiModel,
     sampler::CompositionSampler{<:SwapSampler,<:SwapSampler};
     kwargs...
 )
+    @nospecialize
     error("`SwapSampler` requires states from sampler other than `SwapSampler` to be initialized")
 end
 

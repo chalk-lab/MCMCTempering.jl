@@ -266,5 +266,7 @@
             )
             @test !(eltype(chains_bundle_unresolved) isa MCMCChains.Chains)
         end
+
+        @test_throws ErrorException AbstractMCMC.step(rng, product_model, swapspl ∘ swapspl)
     end
 end
